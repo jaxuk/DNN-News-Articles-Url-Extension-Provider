@@ -1,0 +1,105 @@
+<dotnetnuke type="Package" version="5.0">
+  <packages>
+    <package name="Dnn.NewsArticlesFriendlyUrlProvider" type="Module" version="00.00.01">
+      <friendlyName>Dnn.NewsArticlesFriendlyUrlProvider</friendlyName>
+      <description>Yedit.co.uk Dnn.NewsArticlesFriendlyUrlProvider module</description>
+      <iconFile>~/Images/icon_extensions_32px.png</iconFile>
+      <owner>
+        <name>Yedit.co.uk</name>
+        <organization>Yedit.co.uk</organization>
+        <url>http://www.yedit.co.uk</url>
+        <email>info@yedit.co.uk</email>
+      </owner>
+      <license src="License.txt"></license>
+      <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
+      <azureCompatible>true</azureCompatible>
+      <dependencies>
+        <dependency type="Package">DnnForge - NewsArticles</dependency>
+        <dependency type="CoreVersion">07.01.00</dependency>
+      </dependencies>
+      
+      <components>
+        <component type="Script">
+          <scripts>
+            <basePath>DesktopModules\Dnn.NewsArticlesFriendlyUrlProvider</basePath>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.00.00.SqlDataProvider</name>
+              <version>01.00.00</version>
+            </script>
+            <script type="Install">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>01.01.00.SqlDataProvider</name>
+              <version>01.01.00</version>
+            </script>
+            <script type="Uninstall">
+              <path>Providers\DataProviders\SqlDataProvider</path>
+              <name>Uninstall.SqlDataProvider</name>
+              <version>01.01.00</version>
+            </script>
+          </scripts>
+        </component>
+        <component type="UrlProvider">
+          <urlProvider>
+            <name>DNN News Articles Url Extension Provider</name>
+            <type>DNN.Modules.NewsArticles.ModuleFriendlyUrlProvider.NewsArticlesModuleProvider</type>
+            <settingsControlSrc>DesktopModules/Dnn.NewsArticlesFriendlyUrlProvider/Settings.ascx</settingsControlSrc>
+            <redirectAllUrls>true</redirectAllUrls>
+            <replaceAllUrls>true</replaceAllUrls>
+            <rewriteAllUrls>true</rewriteAllUrls>
+            <desktopModule></desktopModule>
+          </urlProvider>
+        </component>
+        <component type="ResourceFile">
+          <resourceFiles>
+            <basePath>DesktopModules/Dnn.NewsArticlesFriendlyUrlProvider</basePath>
+            <resourceFile>
+              <name>Resources.zip</name>
+            </resourceFile>
+          </resourceFiles>
+        </component>
+        <component type="Config">
+          <config>
+            <configFile>web.config</configFile>
+            <install>
+              <configuration>
+                <nodes>
+                  <node path="/configuration/configSections/sectionGroup[@name='dotnetnuke']" action="update" key="name" collision="overwrite">
+                    <section name="moduleFriendlyUrl" requirePermission="false" type="DotNetNuke.Framework.Providers.ProviderConfigurationHandler, DotNetNuke" />
+                  </node>
+                  <node path="/configuration/dotnetnuke" action="update" targetpath="/configuration/dotnetnuke/moduleFriendlyUrl" collision="ignore">
+                    <moduleFriendlyUrl defaultProvider="None">
+                      <providers>
+                      </providers>
+                    </moduleFriendlyUrl>
+                  </node>
+                  <node path="/configuration/dotnetnuke/moduleFriendlyUrl/providers" action="update" key="name" collision="ignore">
+                    <add name="Dnn.NewsArticles" type="DNN.Modules.NewsArticles.ModuleFriendlyUrlProvider.NewsArticlesModuleProvider, Dnn.NewsArticlesFriendlyUrlProvider">
+                      <portals>
+                      </portals>
+                    </add >
+                  </node>
+                </nodes>
+              </configuration>
+            </install>
+            <uninstall>
+              <configuration>
+                <nodes>
+                  <node path="/configuration/dotnetnuke/moduleFriendlyUrl/providers/add[@name='Dnn.NewsArticles']" action="remove" />
+                </nodes>
+              </configuration>
+            </uninstall>
+          </config>
+        </component>
+        <component type="Assembly">
+          <assemblies>
+            <assembly>
+              <name>Dnn.NewsArticlesFriendlyUrlProvider.dll</name>
+              <path>bin</path>
+            </assembly>
+          </assemblies>
+        </component>
+      </components>
+    </package>
+  </packages>
+</dotnetnuke>
