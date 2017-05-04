@@ -14,10 +14,9 @@
 	
 	<h4>Bug Fixes</h4>
 	<ul>
-			<li>List</li>
-			<li>of</li>
-			<li>bug</li>
-			<li>fixes</li>
+			<li>0.0.0.2
+			<br/>Updated to ensure that cache is cleared and rebuilt - Thanks naineshmehta (https://github.com/naineshmehta)
+			</li>
 	</ul>
 	
 </div>

@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="Dnn.NewsArticlesFriendlyUrlProvider" type="Module" version="00.00.01">
+    <package name="Dnn.NewsArticlesFriendlyUrlProvider" type="Module" version="00.00.02">
       <friendlyName>Dnn.NewsArticlesFriendlyUrlProvider</friendlyName>
       <description>Yedit.co.uk Dnn.NewsArticlesFriendlyUrlProvider module</description>
       <iconFile>~/Images/icon_extensions_32px.png</iconFile>
